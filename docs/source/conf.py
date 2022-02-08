@@ -7,11 +7,11 @@ import sys
 
 import foo
 
-project = foo.__package__
-author = foo.__author__
-copyright = foo.__copyright__
-version = foo.__version__
-release = version
+# project = foo.__package__
+# author = foo.__author__
+# copyright = foo.__copyright__
+# version = foo.__version__
+# release = version
 
 extensions = [
     "sphinx.ext.autodoc",
