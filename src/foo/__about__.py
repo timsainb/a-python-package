@@ -10,7 +10,7 @@ __all__ = [
 ]
 
 __package__ = "a-python-package"
-__description__ = "A Python package test"
+__description__ = "A Python package test2"
 __url__ = "https://github.com/mattmolinare/a-python-package"
 __version__ = "0.0.9"
 __author__ = "Matt Molinare"
