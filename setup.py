@@ -12,7 +12,7 @@ root_dir = pathlib.Path(__file__).parent.resolve()
 sys.path.insert(0, root_dir)
 
 # Get source directory.
-src_dir = root_dir / "foo"
+src_dir = root_dir / "kinectacq"
 
 # Find packages within source directory.
 
@@ -21,7 +21,7 @@ docs_requirements_file = root_dir / "docs" / "requirements.txt"
 docs_requirements = docs_requirements_file.read_text().splitlines()
 
 setuptools.setup(
-    name="foo",
+    name="kinectacq",
     version="0.0.9",
     description="A Python package test2",
     long_description="",
