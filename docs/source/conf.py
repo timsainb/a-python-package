@@ -14,57 +14,57 @@ version = foo.__version__
 release = version
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.intersphinx',
-    'sphinx.ext.linkcode',
-    'sphinx.ext.mathjax',
-    'numpydoc'
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.intersphinx",
+    "sphinx.ext.linkcode",
+    "sphinx.ext.mathjax",
+    "numpydoc",
 ]
 
-autodoc_typehints = 'none'
+autodoc_typehints = "none"
 
 intersphinx_mapping = {
-    'python': ('https://docs.python.org/dev/', None),
-    'numpy': ('https://numpy.org/doc/stable/', None)
+    "python": ("https://docs.python.org/dev/", None),
+    "numpy": ("https://numpy.org/doc/stable/", None),
 }
 
 numpydoc_xref_param_type = True
-numpydoc_xref_ignore = {
-    'or',
-    'optional'
-}
+numpydoc_xref_ignore = {"or", "optional"}
 numpydoc_xref_aliases = {
-    'ndarray': 'numpy.ndarray',
-    'array_like': ':term:`numpy:array_like`'
+    "ndarray": "numpy.ndarray",
+    "array_like": ":term:`numpy:array_like`",
 }
 
-master_doc = 'index'
+master_doc = "index"
 
-templates_path = [
-    '_templates'
-]
+# templates_path = [
+#    '_templates'
+# ]
 
-exclude_patterns = [
-    '_build'
-]
+# exclude_patterns = [
+#    '_build'
+# ]
 
-html_theme = 'sphinx_rtd_theme'
-html_theme_options = {
-}
+html_theme = "sphinx_rtd_theme"
+html_theme_options = {}
 
-html_static_path = [
-    '_static'
-]
+# html_static_path = [
+#    '_static'
+# ]
 
 
 def _get_revision():
     try:
-        process = subprocess.run(['git', 'rev-parse', '--short', 'HEAD'],
-                                 capture_output=True, check=True, text=True)
+        process = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True,
+            check=True,
+            text=True,
+        )
         return process.stdout.strip()
     except subprocess.CalledProcessError:
-        return 'main'
+        return "main"
 
 
 _revision = _get_revision()
@@ -72,11 +72,11 @@ _revision = _get_revision()
 
 def linkcode_resolve(domain, info):
 
-    if domain != 'py':
+    if domain != "py":
         return None
 
     # Get module.
-    module_name = info['module']
+    module_name = info["module"]
     if not module_name:
         return None
     module = sys.modules.get(module_name)
@@ -84,16 +84,16 @@ def linkcode_resolve(domain, info):
         return None
 
     # Get object.
-    obj_name = info['fullname']
+    obj_name = info["fullname"]
     obj = module
-    for attr in obj_name.split('.'):
+    for attr in obj_name.split("."):
         try:
             obj = getattr(obj, attr)
         except Exception:
             return None
         if isinstance(obj, property):
             obj = obj.fget
-        while hasattr(obj, '__wrapped__'):
+        while hasattr(obj, "__wrapped__"):
             obj = obj.__wrapped__
 
     # Get source file path relative to package directory.
@@ -108,6 +108,6 @@ def linkcode_resolve(domain, info):
     # Get source line specification.
     lines, first_line_no = inspect.getsourcelines(obj)
     last_line_no = first_line_no + len(lines) - 1
-    line_spec = f'#L{first_line_no}-L{last_line_no}'
+    line_spec = f"#L{first_line_no}-L{last_line_no}"
 
-    return f'{foo.__url__}/blob/{_revision}/src/foo/{file}/{line_spec}'
+    return f"{foo.__url__}/blob/{_revision}/src/foo/{file}/{line_spec}"
