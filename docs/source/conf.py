@@ -5,13 +5,7 @@ import os
 import subprocess
 import sys
 
-import foo
-
-# project = foo.__package__
-# author = foo.__author__
-# copyright = foo.__copyright__
-# version = foo.__version__
-# release = version
+import kinectacq
 
 extensions = [
     "sphinx.ext.autodoc",
@@ -38,20 +32,8 @@ numpydoc_xref_aliases = {
 
 master_doc = "index"
 
-# templates_path = [
-#    '_templates'
-# ]
-
-# exclude_patterns = [
-#    '_build'
-# ]
-
 html_theme = "sphinx_rtd_theme"
 html_theme_options = {}
-
-# html_static_path = [
-#    '_static'
-# ]
 
 
 def _get_revision():
@@ -100,7 +82,7 @@ def linkcode_resolve(domain, info):
     file = inspect.getsourcefile(obj)
     if file is None:
         return None
-    package_dir = os.path.dirname(foo.__file__)
+    package_dir = os.path.dirname(kinectacq.__file__)
     if os.path.commonpath([file, package_dir]) != package_dir:
         return None
     file = os.path.relpath(file, start=package_dir)
@@ -110,4 +92,4 @@ def linkcode_resolve(domain, info):
     last_line_no = first_line_no + len(lines) - 1
     line_spec = f"#L{first_line_no}-L{last_line_no}"
 
-    return ""  # f"{foo.__url__}/blob/{_revision}/src/foo/{file}/{line_spec}"
+    return ""
