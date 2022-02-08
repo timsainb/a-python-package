@@ -2,13 +2,13 @@
 API Reference
 =============
 
-Package :mod:`foo`
+Package :mod:`kinectacq`
 ==================
 
-Module :mod:`foo.bar`
+Module :mod:`kinectacq.bar`
 ---------------------
 
-.. automodule:: foo.bar
+.. automodule:: kinectacq.bar
    :members:
    :undoc-members:
    :show-inheritance:
