@@ -15,7 +15,6 @@ sys.path.insert(0, root_dir)
 src_dir = root_dir / "foo"
 
 # Find packages within source directory.
-packages = setuptools.find_packages(where=str(src_dir))
 
 # Read dependencies for documentation generation.
 docs_requirements_file = root_dir / "docs" / "requirements.txt"
